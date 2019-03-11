@@ -1,5 +1,13 @@
 #include <iostream>
 #include <math.h>
+#include "cube.h"
+#include "plog/Log.h"
+#define NAME "David" // Object-like macros with substitution text, avoid
+#define CUBE_IT
+#define ENABLE_DEBUG
+
+// forward declaration
+int square(int x);
 
 int getValueFromUser() {
 	int input{ 0 };
@@ -10,11 +18,11 @@ int getValueFromUser() {
 	return input;
 }
 
-int square(int x) {
-  return x *x;
-}
-
 int main() {
+  #ifdef ENABLE_DEBUG
+  std::cerr << "main() called\n";
+  #endif
+
   int a; // Variable allocation
 
   std::cout << a << "\n"; // Undefined behavior
@@ -25,7 +33,7 @@ int main() {
   int c {}; // Zero initialization
 
   // << insertion operator
-  std::cout << "a + b + c = " << a + b + c << "\n";
+  std::cout << std::string(NAME) + " a + b + c = " << a + b + c << "\n";
 
   // int x;
   
@@ -45,6 +53,16 @@ int main() {
   int value{ getValueFromUser() };
 
   std::cout << "value² = " << square(value) << "\n";
+
+  // Conditional compilation
+  // also ifndef
+  #ifdef CUBE_IT
+  std::cout << "value^3 = " << cube(value) << "\n";
+  #endif
+
+  #if 0 // Don't compile anything starting here
+    std::cout << "Chloée\n";
+  #endif // until this point
 
   return 0;
 }
