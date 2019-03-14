@@ -1,12 +1,12 @@
 CXX		  := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb
+CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb -lSDL2main -lSDL2
 
 BIN		:= bin
 SRC		:= src
 INCLUDE	:= include
 LIB		:= lib
 
-LIBRARIES	:=
+LIBRARIES	:= 
 EXECUTABLE	:= main
 
 
